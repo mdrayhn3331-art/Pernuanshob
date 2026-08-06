@@ -1,42 +1,36 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
-
   return (
-    <div className={darkMode ? "app dark" : "app light"}>
-      <header className="header">
-        <h1>🛍️ Rayhan Digital Shop</h1>
+    <BrowserRouter>
+      <Routes>
 
-        <button
-          className="theme-btn"
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? "☀️ Light" : "🌙 Dark"}
-        </button>
-      </header>
+        {/* Public Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <main className="home">
-        <div className="hero-card">
-          <h2>Welcome to Rayhan Digital Shop</h2>
+        {/* Protected Home */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
 
-          <p>
-            Premium Mobile-First E-Commerce Platform
-          </p>
+        {/* 404 Redirect */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
 
-          <button className="shop-btn">
-            Start Shopping
-          </button>
-        </div>
-      </main>
-
-      <nav className="bottom-nav">
-        <button>🏠 Home</button>
-        <button>🔍 Search</button>
-        <button>🛒 Cart</button>
-        <button>❤️ Wishlist</button>
-        <button>👤 Profile</button>
-      </nav>
-    </div>
+      </Routes>
+    </BrowserRouter>
   );
 }
