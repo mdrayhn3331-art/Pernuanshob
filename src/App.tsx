@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./pages/Products";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import ProductDetails from "./pages/ProductDetails";
 
 export default function App() {
 
@@ -63,6 +63,21 @@ export default function App() {
         }
 
       />
+      <Route
+
+path="/product/:id"
+
+element={
+
+<ProtectedRoute>
+
+<ProductDetails/>
+
+</ProtectedRoute>
+
+}
+
+/>
 
 
 
