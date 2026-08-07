@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Products from "./pages/Products";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
 
 export default function App() {
 
@@ -72,6 +73,21 @@ element={
 <ProtectedRoute>
 
 <ProductDetails/>
+
+</ProtectedRoute>
+
+}
+
+/>
+      <Route
+
+path="/cart"
+
+element={
+
+<ProtectedRoute>
+
+<Cart/>
 
 </ProtectedRoute>
 
