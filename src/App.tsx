@@ -7,6 +7,8 @@ import Products from "./pages/Products";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+
 
 export default function App() {
 
@@ -95,7 +97,14 @@ element={
 
 />
 
-
+<Route
+ path="/checkout"
+ element={
+  <ProtectedRoute>
+    <Checkout/>
+  </ProtectedRoute>
+ }
+/>
 
       {/* 404 Redirect */}
 
