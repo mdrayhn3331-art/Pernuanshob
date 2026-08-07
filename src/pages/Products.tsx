@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/products";
 import { Product } from "../types/product";
-
+import { Link } from "react-router-dom";
 export default function Products() {
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -110,6 +110,13 @@ export default function Products() {
             <button className="shop-btn">
               View Details
             </button>
+            <Link to={`/product/${product.id}`}>
+
+<button className="shop-btn">
+ View Details
+</button>
+
+</Link>
 
 
           </div>
